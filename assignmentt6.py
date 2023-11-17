@@ -17,5 +17,6 @@ for employees in data["employees"]:
         full_name = f"{first_name}{last_name}"
     #new_dict = {}
     new_dict[email]={"id":employees["id"],"fullName":full_name}
-employee_details=json.dumps(new_dict,indent=2)
+with open("new1.json","w")  as n : 
+    employee_details=json.dump(new_dict,n,indent=2)
 print(employee_details)
