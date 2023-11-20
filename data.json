@@ -1,0 +1,24 @@
+{
+    "name":"employee",
+    "employee":[
+        {
+            "id":1,
+            "first_name":"ravi",
+            "middle_name":"null",
+            "last_name":"chiminalla"
+        },
+        {
+            "id":2,
+            "first_name":"divya",
+            "middle_name":"null",
+            "last_name":"pappala"
+        },
+        {
+            "id":3,
+            "first_name":"ravindhra",
+            "middle_name":"naik",
+            "last_name":"banavathu"
+        }
+
+    ]
+}
