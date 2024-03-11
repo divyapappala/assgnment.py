@@ -1,0 +1,84 @@
+postgresql
+
+# check database
+\l
+drop
+# check table
+\d
+
+#convert db to postgresql
+\c demodb
+
+#create db
+create database demodb;
+
+#delete
+drop database test;
+
+#create table
+create table student(name text,number int,age int);
+
+# add data to table
+insert into students(name,number,age) values('sam',12,20);
+
+# show table
+select * from students;
+select name from students;
+select * from students where number =12;
+
+#delete table
+truncate table students;
+
+## connecting python to postgresql
+import psycopg2
+connect = psycopg2.connect(dbname="postgre",user="postgres",password="Divya64@",host="localhost,port="5432")
+print("connected succesfully")
+
+
+#create table 
+import psycopg2
+conn = psycopg2.connect(dbname="postgre",user="postgres",password="Divya64@",host="localhost,port="5432")
+cursor = conn.cursor()
+cursor.execute('''create table employee(Name Text,ID int,Age int);''')
+print("connected succesfully")
+conn.commit()
+conn.close()
+
+#insert data
+def data():
+    conn = psycopg2.connect(dbname="postgres",user="postgres",password="Divya64@",host="localhost",port="5432")
+    cursor = conn.cursor()
+    cursor.execute('''insert into employee(name,id,age) values ('sam',01,30);''')
+    print("data  added succesfully")
+    conn.commit()
+    conn.close()
+data()
+
+#select the data
+def extract():
+    conn = psycopg2.connect(dbname="postgres",user="postgres",password="Divya64@",host="localhost",port="5432")
+    cursor = conn.cursor()
+    cursor.execute('''select * from employee;''')
+    print(cursor.fetchone())
+    # print("data  added succesfully")
+    conn.commit()
+    conn.close()
+extract()
+
+#instead of selecting all table used to select individual names
+show = cursor.fetchone()
+    print(show[1])
+
+## Add data by user
+def data():
+    conn = psycopg2.connect(dbname="postgres",user="postgres",password="Divya64@",host="localhost",port="5432")
+    cursor = conn.cursor()
+    name  =input('Enter name:')
+    id = input('Enter id:')
+    age = input('Enter age:')
+    query = '''insert into employee(Name,Id,Age) values(%s,%s,%s);'''
+    cursor.execute(query,(name,id,age))
+    print("data  added succesfully")
+    conn.commit()
+    conn.close()
+data()
